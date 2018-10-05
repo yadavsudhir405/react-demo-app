@@ -26,5 +26,9 @@ module.exports = {
     ],
     devServer: {
         contentBase: path.join(__dirname,"dist")
+    },
+    devtool: 'inline-source-map',
+    resolve: {
+        extensions: [".js",".jsx",".ts",".tsx"]
     }
 };

@@ -1,12 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import AuthorQuiz from './AuthorQuiz';
-import * as serviceWorker from './serviceWorker';
-
-ReactDOM.render(<AuthorQuiz name={"Hello world"} />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = require("react");
+const ReactDOM = require("react-dom");
+const ROOT = document.querySelector('.root');
+ReactDOM.render(React.createElement("h1", null, "Hello World"), ROOT);
+//# sourceMappingURL=index.js.map

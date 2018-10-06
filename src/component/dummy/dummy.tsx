@@ -1,6 +1,8 @@
 import * as React from "react";
 import {Clock} from "../clock/clock";
 import {Login} from "../login/login";
+import {Properties} from "../properties/properties";
+import {Calculator} from "../calculator/calculator";
 export class Dummy extends React.Component<NamedParam, CountingState>{
 
     constructor(props: NamedParam){
@@ -14,6 +16,8 @@ export class Dummy extends React.Component<NamedParam, CountingState>{
             <button onClick={this.handleClick.bind(this,{address: "Sudhir"})}>show popup</button>
             <Clock/>
             <Login/>
+            <Properties/>
+            <Calculator/>
         </div>;
     }
     updateClick = () =>{

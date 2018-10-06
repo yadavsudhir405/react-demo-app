@@ -10,15 +10,15 @@ export class Dummy extends React.Component<NamedParam, CountingState>{
         return <div>
             <h1> Hello World {this.props.address.country} {this.props.address.state}</h1>
             <button onClick={this.updateClick}>Click Me</button> {this.state.count}
-            <button onClick={this.handleClick}>show popup</button>
+            <button onClick={this.handleClick.bind(this,{address: "Sudhir"})}>show popup</button>
             <Clock/>
         </div>;
     }
     updateClick = () =>{
         this.setState({count: this.state.count+1})
     };
-    handleClick = ()=>{
-        alert("Hello World" +this.state.count);
+    handleClick = (param: NamedParam)=>{
+        alert("Hello World" + param.address);
     };
 
 

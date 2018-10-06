@@ -3,4 +3,4 @@ import * as ReactDOM from "react-dom";
 import {Dummy} from "./component/dummy/dummy";
 const addressV = {country: "India", state: "Jharkhand"};
 const ROOT = document.querySelector('.root');
-ReactDOM.render(<Dummy address={{country: "India", state:"Jharkhand"}}/>, ROOT);
+ReactDOM.render(<Dummy address={addressV}/>, ROOT);

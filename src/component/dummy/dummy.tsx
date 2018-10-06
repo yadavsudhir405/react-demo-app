@@ -3,6 +3,8 @@ import {Clock} from "../clock/clock";
 import {Login} from "../login/login";
 import {Properties} from "../properties/properties";
 import {Calculator} from "../calculator/calculator";
+import {TemperatureInput} from "../temperatureUnit/temperatureInput";
+import {TemperatureUnit} from "../commons/temperatureUnit";
 export class Dummy extends React.Component<NamedParam, CountingState>{
 
     constructor(props: NamedParam){

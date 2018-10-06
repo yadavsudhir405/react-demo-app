@@ -1,30 +1,46 @@
 import * as React from "react";
-import {BoilingVerdict} from "../boilingVerdict/boilingVerdict";
+import {TemperatureInput} from "../temperatureUnit/temperatureInput";
+import {TemperatureUnit} from "../commons/temperatureUnit";
+import {TemperatureValue} from "../commons/temperatureValue";
+import {IOnTemperatureChange} from "../commons/ionTemperatureChange";
 
 export class Calculator extends React.Component<any, CalculatorState>{
     constructor(props: any){
         super(props);
-        this.state = {temperature: 10};
-        this.handleChange = this.handleChange.bind(this);
+        this.state = {temperature: null, unit: null};
     }
-
+    temperatureFunc: IOnTemperatureChange = (temp: TemperatureValue) => {
+        this.setState({temperature: temp.temperature, unit: temp.unit});
+    };
     render(){
-        let currentTemperature =  this.state.temperature;
         return <div>
-            <fieldset>
-                <legend>Enter temperature in celcius</legend>
-                <input type="text" value={currentTemperature} onChange={this.handleChange}/>
-            </fieldset>
-            <BoilingVerdict  temperature={currentTemperature}/>
-        </div>
+                <TemperatureInput temperatureUnit={TemperatureUnit.FARENHITE} temperature={this.farenhiteTemperature()} onTemperatureChange = {this.temperatureFunc} />
+                <TemperatureInput temperatureUnit={TemperatureUnit.CELCIUS} temperature={this.celciusTemperature()} onTemperatureChange = {this.temperatureFunc}/>
+            </div>
+    }
+    farenhiteTemperature(): number {
+        return this.state.unit === TemperatureUnit.FARENHITE ? this.state.temperature : this.convertToFahrenheit(this.state.temperature);
     }
 
-    handleChange(event: any) {
-        let newValue =  event.target.value;
-        this.setState({temperature: newValue});
+    celciusTemperature(): number {
+        let currentUnit = this.state.unit;
+        let currentTemperature = this.state.temperature;
+        return currentUnit === TemperatureUnit.CELCIUS ? currentTemperature : this.converToCelcius(currentTemperature);
     }
+    converToCelcius(farenhite: number): number {
+        return (farenhite - 32) * 5 / 9;
+    }
+
+    convertToFahrenheit(celsius: number): number {
+        return (celsius * 9 / 5) + 32;
+    }
+    handleChange = (temp: TemperatureValue) => {
+        this.setState({temperature: temp.temperature, unit: temp.unit});
+    }
+
 }
 
 interface CalculatorState {
     temperature: number;
+    unit: TemperatureUnit
 }
